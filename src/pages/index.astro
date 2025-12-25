@@ -1,11 +1,101 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<!-- Introduction -->
+	<div class="mt-10 px-4 lg:px-0 leading-relaxed text-gray-700 lg:text-[1.05rem]">
+		<p>
+			Hey there!
+		</p>
+		<p class="mt-5">
+			I'm a software engineer, currently working at <a href="https://zulip.com/" target="_blank" class="text-blue-500 font-medium">Zulip</a>.
+		</p>
+		<p class="mt-5">
+			All the code I write at Zulip is open source, and my work - including <a href="https://github.com/zulip/zulip/pulls?q=is%3Apr+author%3Aprakhar1144+is%3Amerged" target="_blank" class="text-blue-500 font-medium">pull requests</a>,
+			<a href="https://github.com/zulip/zulip/commits?author=prakhar1144" target="_blank" class="text-blue-500 font-medium">commits</a>, and code reviews - is publicly accessible 🎉.
+		</p>
+		<p class="mt-5">
+			Contact: <a href="mailto:prakhar1144@gmail.com" class="text-blue-500">Email</a>
+		</p>
+		<p>
+			Find me: <a href="https://www.linkedin.com/in/prakhar1144/" class="text-blue-500">LinkedIn</a> / <a href="https://github.com/prakhar1144" class="text-blue-500">GitHub</a>
+			/ <a href="https://stackoverflow.com/users/14264497/prakhar" class="text-blue-500">StackOverflow</a>
+		</p>
+	</div>
+	<!-- Open source work -->
+	<div class="mt-8 px-4 lg:px-0">
+		<h1 class="text-xl font-medium lg:text-2xl">Open source contributions</h1>
+		<ul class="mt-3 pl-6 list-circle text-gray-700 lg:text-[1.05rem] lg:mt-6">
+			<!-- <li>Patches - <a href="https://github.com/knadh/dns.toys/pulls?q=is%3Apr+author%3Aprakhar1144+is%3Aclosed" target="_blank" class="text-blue-500 font-medium">dns.toys</a> / <a href="https://github.com/zulip/zulip/pulls?q=is%3Apr+author%3Aprakhar1144+is%3Amerged" target="_blank" class="text-blue-500 font-medium">zulip</a></li> -->
+			
+			<li class="font-medium"><a href="https://github.com/zulip/zulip" class="hover:text-blue-500">zulip/zulip</a> - <a href="https://github.com/zulip/zulip/pulls?q=is%3Apr+author%3Aprakhar1144+is%3Amerged" target="_blank" class="text-blue-500 font-normal">pull requests</a></li>
+			<li class="mt-1 font-medium"><a href="https://github.com/astral-sh/ruff" class="hover:text-blue-500">astral-sh/ruff</a> - <a href="https://github.com/astral-sh/ruff/pulls?q=is%3Apr+author%3Aprakhar1144+is%3Amerged%2Fopen+sort%3Acreated-asc+" target="_blank" class="text-blue-500 font-normal">pull requests</a></li>
+			<li class="mt-1 font-medium"><a href="https://github.com/knadh/dns.toys" class="hover:text-blue-500">knadh/dns.toys</a> - <a href="https://github.com/knadh/dns.toys/pulls?q=is%3Apr+author%3Aprakhar1144+is%3Aclosed" target="_blank" class="text-blue-500 font-normal">pull requests</a></li>
+
+			<li class="mt-1"><a href="https://summerofcode.withgoogle.com/archive/2023/projects/ijktWPlO" target="_blank" class="text-blue-500 font-medium">Contributor</a> - Google Summer of Code 2023</li>
+			<li class="mt-1">Mentor - Google Summer of Code <a href="https://summerofcode.withgoogle.com/archive/2024/projects/WQ3Wm0mo" target="_blank" class="text-blue-500">2024</a> & 2025</li>
+			<!-- <li class="mt-1">StackOverflow - 150k+ people reached through <a href="https://stackoverflow.com/users/14264497/prakhar" target="_blank" class="text-blue-500">answers</a>.</li> -->
+			<!-- <li class="mt-1"><a href="https://www.openstreetmap.org/user/prakhar-pratyush" target="_blank" class="text-blue-500">Mapper</a> - OpenStreetMap</li> -->
+		</ul>
+	</div>
+	<!-- Projects -->
+	<div class="mt-8 px-4 lg:px-0">
+		<h1 class="text-xl font-medium lg:text-2xl">Projects</h1>
+		<!-- <p class="mt-3 leading-relaxed text-gray-700 lg:text-[1.05rem]">Some recent work I'm proud of.</p> -->
+
+		<h1 class="mt-3 font-medium lg:text-[1.05rem] text-gray-900 lg:mt-6">End-to-End Encryption for Mobile Push Notifications</h1>
+		<!-- <p class="mt-1 text-sm text-gray-500">Project at Zulip</p> -->
+		<div class="mt-1 text-gray-700 leading-relaxed">
+			<p>Implemented end-to-end encryption for mobile push notifications.</p>
+			<ul class="mt-3 pl-6 list-circle">
+				<li>
+					Several self-hosted orgs were <a href="https://github.com/zulip/zulip/issues/6954#issuecomment-2634131457" target="_blank" class="text-blue-500">unable to adopt</a> Zulip
+					due to their data protection policies, which required E2EE notifications. With encryption in place, those orgs now happily use Zulip!
+				</li>
+				<li class="mt-1">
+					It was great to see symmetric cryptography in action across a complex setup - mobile apps, self-hosted servers, cloud server, push service, and FCM/APNs - all working together.
+				</li>
+			</ul>
+		</div>
+
+		<h1 class="mt-5 font-medium lg:text-[1.05rem] text-gray-900">The Favourite One - "Follow Topics"</h1>
+		<!-- <p class="mt-1 text-sm text-gray-500">Project at Zulip</p> -->
+		<div class="mt-1 text-gray-700 leading-relaxed">
+			<p>Implemented a core piece of Zulip's notification subsystem.</p>
+			<!-- <p class="mt-2">Favourite for a few reasons:</p> -->
+			<ul class="mt-3 pl-6 list-circle">
+				<li>
+					Got a <a href="https://rust-lang.zulipchat.com/#narrow/channel/122653-zulip/topic/.22Follow.20Topic.22.20feature/near/399772355" target="_blank" class="text-blue-500">shoutout in the Rust community</a>, which felt amazing as an undergrad
+					to see my work being useful to folks building something as cool as the Rust programming language :)
+				</li>
+				<li class="mt-1">
+					It was the first time I worked on such a long, engineering-heavy project. The whole thing spanned
+					7-8 months and involved tons of product and technical discussions.
+				</li>
+				<li class="mt-1">
+					Helped me grow from open source newbie to full-time offer at Zulip.
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- Latest posts -->
+	<div class="mt-8 px-4 lg:px-0">
+		<div class="flex items-center justify-between">
+			<h1 class="text-xl font-medium lg:text-2xl">Latest posts</h1>
+			<a href="/blog" class="text-blue-500 hover:text-blue-600">See all posts</a>
+		</div>
+		<div class="flex items-center justify-between mt-3 lg:mt-6">
+			<a href="/blog/6" class=" text-blue-500 font-medium lg:text-[1.05rem]">GSoC - coding period begins</a>
+			<p class=" text-gray-500">Jun 2023</p>
+		</div>
+		<div class="flex items-center justify-between mt-2">
+			<a href="/blog/5" class=" text-blue-500 font-medium lg:text-[1.05rem]">git init GSoC</a>
+			<p class=" text-gray-500">May 2023</p>
+		</div>
+		<div class="flex items-center justify-between mt-2 ">
+			<a href="/blog/2" class=" text-blue-500 font-medium lg:text-[1.05rem]">Sitemaps</a>
+			<p class=" text-gray-500">Jun 2021</p>
+		</div>
+	</div>
 </Layout>

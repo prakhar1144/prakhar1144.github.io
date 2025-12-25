@@ -1,3 +1,9 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/300.css';
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,18 +11,31 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Prakhar Pratyush</title>
 	</head>
 	<body>
-		<slot />
+		<div class="max-w-screen-md mx-auto">
+			<!-- Navbar -->
+			<div class="lg:flex lg:justify-between lg:items-center lg:pt-14">
+				<h1 class="text-4xl mt-8 mb-5 lg:my-0 text-center text-zinc-700 font-semibold hover:text-red-500"><a href="/">Prakhar Pratyush</a></h1>
+				<div class="list-none flex justify-center space-x-5 text-blue-500 font-semibold lg:text-[1.05rem]">
+					<a href="/" class="hover:text-red-400">Home</a>
+					<a href="/work" class="hover:text-red-400">Work</a>
+					<a href="/blog" class="hover:text-red-400">Blog</a>
+					<!-- <a href="mailto:prakhar1144@gmail.com" class="hover:text-red-400">Email</a> -->
+					<a href="https://github.com/prakhar1144" target="_blank" class="hover:text-red-400">GitHub</a>
+				</div>
+			</div>
+
+			<slot />
+
+			<!-- Footer -->
+			<div class="mt-6 py-4 text-center text-sm text-gray-500">
+				© 2025 Prakhar Pratyush
+			</div>
+		</div>
+
+		<!-- Cloudflare Web Analytics -->
+		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "23a6971c2d8444e289de87ac12d58f56"}'></script>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
