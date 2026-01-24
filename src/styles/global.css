@@ -1,0 +1,21 @@
+/* Match inline code styling with Shiki code blocks */
+/* We use :not(pre) > code to avoid affecting fenced code blocks */
+.prose :not(pre) > code {
+	background-color: #27272a; /* zinc-800 */
+	padding: 0.2rem 0.4rem;
+	border-radius: 0.25rem;
+	font-size: 0.875em;
+	font-weight: 400;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.prose pre {
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.prose code::before,
+.prose code::after {
+	content: "";
+}
