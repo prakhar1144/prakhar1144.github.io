@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Book {
+	title: string;
+	author: string;
+	reading: boolean;
+	note: string;
+	slug: string;
+}
+
+const books: Book[] = [
+	{
+		title: 'Designing Data-Intensive Applications',
+		author: 'Martin Kleppmann',
+		reading: true,
+		note: "",
+		slug: 'designing-data-intensive-applications',
+	},
+	{
+		title: 'Chip War',
+		author: 'Chris Miller',
+		reading: true,
+		note: "",
+		slug: 'chip-war',
+	},
+	{
+		title: 'Empire of AI',
+		author: 'Karen Hao',
+		reading: false,
+		note: "",
+		slug: 'empire-of-ai',
+	},
+	{
+		title: "The Hitchhiker's Guide to the Galaxy",
+		author: 'Douglas Adams',
+		reading: false,
+		note: "",
+		slug: 'hitchhikers-guide-to-the-galaxy',
+	},
+	{
+		title: 'Animal Farm',
+		author: 'George Orwell',
+		reading: false,
+		note: "",
+		slug: 'animal-farm',
+	},
+	{
+		title: 'The Rust Programming Language',
+		author: 'Steve Klabnik, Carol Nichols, and Chris Krycho, with contributions from the Rust Community',
+		reading: false,
+		note: "",
+		slug: 'the-rust-book',
+	},
+	{
+		title: 'Python Tricks: The Book',
+		author: 'Dan Bader',
+		reading: false,
+		note: "",
+		slug: 'python-tricks',
+	},
+	{
+		title: 'Ikigai',
+		author: 'Hector Garcia and Francesc Miralles',
+		reading: false,
+		note: "Wouldn't recommend.",
+		slug: 'ikigai',
+	},
+];
+
+// Covers live in src/assets/covers/<slug>.<ext>; books without
+// a file fall back to the placeholder box.
+const coverModules = import.meta.glob<{ default: ImageMetadata }>(
+	'../assets/covers/*.{jpg,jpeg,png,webp}',
+	{ eager: true }
+);
+const covers = new Map(
+	Object.entries(coverModules).map(([path, mod]) => [
+		path.split('/').pop()!.replace(/\.(jpg|jpeg|png|webp)$/, ''),
+		mod.default,
+	])
+);
+
+const reading = books.filter((b) => b.reading);
+const read = books.filter((b) => !b.reading);
+---
+
+<Layout>
+	<div class="mt-12">
+		<h1 class="text-3xl font-bold tracking-tight text-zinc-100">Bookshelf</h1>
+		<p class="mt-3 text-zinc-400 leading-relaxed">The offline feed.</p>
+
+		{reading.length > 0 && (
+			<section class="mt-12">
+				<h2 class="text-sm font-semibold uppercase tracking-[0.08em] text-zinc-500">Currently reading</h2>
+				<div class="mt-5 space-y-7">
+					{reading.map((book) => (
+						<article class="flex gap-5">
+							{covers.has(book.slug) ? (
+								<Image src={covers.get(book.slug)!} alt={`Cover of ${book.title}`} width={84} height={126} densities={[1, 2]} class="w-[84px] h-[126px] shrink-0 rounded-[3px] border border-zinc-700 object-cover" />
+							) : (
+								<div class="w-[84px] h-[126px] shrink-0 rounded-[3px] border border-zinc-700 bg-zinc-900" aria-hidden="true"></div>
+							)}
+							<div class="flex flex-col justify-center gap-1.5">
+								<h3 class="font-semibold text-zinc-100">{book.title}</h3>
+								<p class="text-[13px] text-zinc-500">{book.author}</p>
+								{book.note && <p class="text-sm text-zinc-400 leading-relaxed">{book.note}</p>}
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		)}
+
+		<section class="mt-12">
+			<h2 class="text-sm font-semibold uppercase tracking-[0.08em] text-zinc-500">All books</h2>
+			<div class="mt-5 space-y-7">
+				{read.map((book) => (
+					<article class="flex gap-5">
+						{covers.has(book.slug) ? (
+							<Image src={covers.get(book.slug)!} alt={`Cover of ${book.title}`} width={84} height={126} densities={[1, 2]} class="w-[84px] h-[126px] shrink-0 rounded-[3px] border border-zinc-800 object-cover" />
+						) : (
+							<div class="w-[84px] h-[126px] shrink-0 rounded-[3px] border border-zinc-800 bg-zinc-900" aria-hidden="true"></div>
+						)}
+						<div class="flex flex-col justify-center gap-1.5">
+							<h3 class="font-semibold text-zinc-100">{book.title}</h3>
+							<p class="text-[13px] text-zinc-500">{book.author}</p>
+							{book.note && <p class="text-sm text-zinc-400 leading-relaxed">{book.note}</p>}
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	</div>
+</Layout>
